@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+  <author>Mike van Riel</author>
+  <email>mike@phpdoc.org</email>
+  <version>1.0.0</version>
+  <copyright>Mike van Riel 2013</copyright>
+  <description><![CDATA[
+
+      To improve performance you can add the following to your .htaccess:
+
+      <ifModule mod_deflate.c>
+          <filesMatch "\.(js|css|html)$">
+              SetOutputFilter DEFLATE
+          </filesMatch>
+      </ifModule>
+  ]]></description>
+  <transformations>
+    <transformation query="copy" writer="FileIo" source="templates/phalconeye-api/images" artifact="images"/>
+    <transformation query="copy" writer="FileIo" source="templates/phalconeye-api/css" artifact="css"/>
+    <transformation query="copy" writer="FileIo" source="templates/phalconeye-api/js" artifact="js"/>
+    <transformation writer="twig" query="namespace" source="templates/phalconeye-api/namespace.html.twig" artifact="index.html"/>
+    <transformation writer="twig" query="indexes.namespaces" source="templates/phalconeye-api/namespace.html.twig" />
+    <transformation writer="twig" query="indexes.classes" source="templates/phalconeye-api/class.html.twig" />
+    <transformation writer="twig" query="indexes.interfaces" source="templates/phalconeye-api/interface.html.twig" />
+    <transformation writer="twig" query="indexes.traits" source="templates/phalconeye-api/class.html.twig" />
+    <transformation writer="twig" query="files" source="templates/phalconeye-api/file.html.twig" />
+    <transformation writer="twig" query="files" source="templates/phalconeye-api/file.source.txt.twig" artifact="files/{{path}}.txt"/>
+    <transformation writer="twig" source="templates/phalconeye-api/reports/markers.html.twig" artifact="reports/markers.html"/>
+    <transformation writer="twig" source="templates/phalconeye-api/reports/errors.html.twig" artifact="reports/errors.html"/>
+    <transformation writer="twig" source="templates/phalconeye-api/reports/deprecated.html.twig" artifact="reports/deprecated.html"/>
+    <transformation writer="twig" source="templates/phalconeye-api/graphs/class.html.twig" artifact="graphs/class.html"/>
+    <transformation writer="Graph" source="Class" artifact="graphs/classes.svg" />
+  </transformations>
+</template>
