@@ -10,5 +10,5 @@ documentation yourselves.
 The documentation language is reStructuredText (http://sphinx.pocoo.org/rest.html)
 
 # API
-The API is automatically generated from the sources using the following command:
+The API is automatically generated from the sources using the following command:<br/>
 ./make-api.sh (requires phpdoc installed and root access)
