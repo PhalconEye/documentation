@@ -4,7 +4,7 @@
 echo 'Copying API theme into phpdoc directory..'
 PHPDOCLOCATION="$(pear list-files phpdoc/phpDocumentor | grep VERSION | sed -e 's/php    //g')"
 PHPDOCLOCATION="$(dirname "$PHPDOCLOCATION")/data/templates"
-$(sudo cp -fr ./_theme/phalconeye-api/* ${PHPDOCLOCATION}/phalconeye-api)
+$(sudo cp -fr ./../_theme/phalconeye-api/* ${PHPDOCLOCATION}/phalconeye-api)
 
 # Ask about PhalconEye app dir
 echo -n "Type PhalconEye 'app' directory location, followed by [ENTER]: "
