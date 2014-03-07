@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #474747;
+}
+
+.body .section h1 {
+    margin-top: 0;
+}
+
+.body h2 {
+    border-bottom: 1px solid #cbcbcb;
+}
+
+.primary-box {
+    padding-right: 20px;
+}
+
+.related ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.related ul li {
+    display: inline-block;
+}
+
+#footer p {
+    text-align: center;
+    margin: 50px 0 0 0;
+}
+
+.headerlink {
+    color: #cbcbcb;
+    text-decoration: none;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+a {
+    color: #2866ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #66CCFF;
+}
+
+a:active {
+    color: #003399;
+}
+
+#searchbox *{
+    line-height: normal;
+}
+
+#searchbox input.gsc-search-button {
+    border: none !important;
+}
