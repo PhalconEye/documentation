@@ -84,7 +84,7 @@ Configuration contains two default files, that is necessary for system:
 
 Behaviour
 ---------
-All *.php files under stages directories merging in one structure. So, for example we have such files:
+All \*.php files under stages directories merging in one structure. So, for example we have such files:
 
 .. code-block:: text
 

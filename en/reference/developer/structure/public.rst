@@ -28,4 +28,4 @@ This directory used for different public files. Also it's used by Ajaxplorer too
 Themes
 ------
 CMS themes files. Here can be directories with different files formats (less, css, images, etc).
-More detail information you can find in other section, which focused on :doc:`themes <../themes>`
+More detail information you can find in other section, which focused on :doc:`themes <../packages/themes>`.

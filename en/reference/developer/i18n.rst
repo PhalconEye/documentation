@@ -1,0 +1,6 @@
+Languages And Translations
+==========================
+@TODO
+ - general
+ - tools
+ - js translations
