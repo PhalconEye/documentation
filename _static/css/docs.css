@@ -701,6 +701,7 @@ blockquote {
 .highlight .vg { color: #cae682} /* Name.Variable.Global */
 .highlight .vi { color: #cae682} /* Name.Variable.Instance */
 .highlight .il { color: #e5786d} /* Literal.Number.Integer.Long */
+.highlight pre {padding: 5px;}
 
 hr {
     color: 1px solid #c0c0c0;

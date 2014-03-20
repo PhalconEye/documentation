@@ -4,9 +4,9 @@ CMS Structure
 Let's look on project structure...
 
 
-.. code-block:: php
+.. code-block:: text
 
-    .
+    PhalconEye
     ├── app
     │   ├── config
     │   │   ├── development
@@ -72,9 +72,10 @@ Let's look on project structure...
         └── themes
 
 
-As you see we can separate our project on two logic parts:
+We can separate project on two logical parts:
 
 .. toctree::
+   :maxdepth: 1
 
-    structure/app
-    structure/public
+   structure/app
+   structure/public

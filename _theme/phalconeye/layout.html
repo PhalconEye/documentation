@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 {%- endblock %}
 
+{%- set site = site is not defined and 'http://phalconeye.com/' or site %}
 {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 %}
 {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
 {%- set url_root = pathto('', 1) %}
@@ -10,6 +11,9 @@
 {%- macro relbar() %}
 <div class="related">
     <ul>
+        <li>
+            <a href="{{site}}">Home</a> {{reldelim1}}
+        </li>
         {%- for rellink in rellinks %}
         {% if rellink[2] == 'genindex.html' %}
 
@@ -51,11 +55,18 @@
         {% endif %}
         {%- endfor %}
 
-        {%- for parent in parents %}
-        <li class="right"><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{
-            parent.title }}</a>{{ reldelim1 }}
+        <li class="right"><a href="{{ url_root }}">Index</a>
         </li>
-        {%- endfor %}
+        {%- if next %}
+        <li class="right">
+            <a href="{{ next.link|e }}" title="{{ _('next chapter') }}">{{ next.title }} ></a>
+        </li>
+        {%- endif %}
+        {%- if prev %}
+        <li class="right">
+            <a href="{{ prev.link|e }}" title="{{ _('previous chapter') }}">< {{ prev.title }}</a>
+        </li>
+        {%- endif %}
         {%- block relbardownitems %} {% endblock %}
     </ul>
 </div>

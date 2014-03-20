@@ -15,6 +15,10 @@ h1, h2, h3, h4, h5 {
     border-bottom: 1px solid #cbcbcb;
 }
 
+#wrapper {
+    padding: 10px;
+}
+
 .primary-box {
     padding-right: 20px;
 }
@@ -56,7 +60,7 @@ a:active {
     color: #003399;
 }
 
-#searchbox *{
+#searchbox * {
     line-height: normal;
 }
 

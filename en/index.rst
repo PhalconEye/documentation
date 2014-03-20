@@ -17,9 +17,10 @@ Table of Contents
 -----------------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    reference/structure
+   reference/configuration
 
 Other formats
 -------------
