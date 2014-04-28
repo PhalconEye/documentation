@@ -67,3 +67,10 @@ a:active {
 #searchbox input.gsc-search-button {
     border: none !important;
 }
+
+img.align-center {
+    display: block;
+    box-shadow: 0px 0px 8px grey;
+    width: 1100px;
+    margin: 0 auto;
+}

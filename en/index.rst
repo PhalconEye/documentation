@@ -14,7 +14,7 @@ Table of Contents
 -----------------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 4
 
    reference/installation
    reference/user

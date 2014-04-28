@@ -7,11 +7,11 @@ Let's look on project structure...
 .. code-block:: text
 
     PhalconEye
-    ├── app
-    │   ├── config
+    ├── app                                                     // Application source code.
+    │   ├── config                                              // Main configuration directory.
     │   │   ├── development
     │   │   └── production
-    │   ├── engine
+    │   ├── engine                                              // Engine library directory, heart of PhalconEye.
     │   │   ├── Api
     │   │   ├── Asset
     │   │   │   └── Css
@@ -38,9 +38,9 @@ Let's look on project structure...
     │   │   ├── Translation
     │   │   ├── View
     │   │   └── Widget
-    │   ├── libraries
-    │   ├── modules
-    │   │   ├── Core
+    │   ├── libraries                                           // Directory for packages with type "library", that can be installed.
+    │   ├── modules                                             // Directory for "module" packages.
+    │   │   ├── Core                                            // Required module: Core.
     │   │   │   ├── Api
     │   │   │   ├── Assets
     │   │   │   ├── Command
@@ -50,15 +50,15 @@ Let's look on project structure...
     │   │   │   ├── Model
     │   │   │   ├── View
     │   │   │   └── Widget
-    │   │   └── User
+    │   │   └── User                                            // Required module: User.
     │   │       ├── Controller
     │   │       ├── Form
     │   │       ├── Helper
     │   │       ├── Model
     │   │       ├── View
     │   │       └── Widget
-    │   ├── plugins
-    │   ├── var
+    │   ├── plugins                                             // Plugins directory (packages).
+    │   ├── var                                                 // This is work directory, contains: logs, cache, packages operation results, languages, etc.
     │   │   ├── cache
     │   │   │   ├── annotations
     │   │   │   ├── languages
@@ -66,8 +66,8 @@ Let's look on project structure...
     │   │   │   └── view
     │   │   ├── logs
     │   │   └── temp
-    │   └── widgets
-    └── public
+    │   └── widgets                                             // Widgets directory (packages).
+    └── public                                                  // Public directory, this directory can be accessed through internet, must be set as www root.
         ├── assets
         └── themes
 
