@@ -5,10 +5,10 @@ As normal practice public directory must be defined as WWW_ROOT.
 Public directory allows to store static files like assets and user files.
 Here we can find some directories by default:
 
-    * assets
-    * external
-    * files
-    * themes
+* assets
+* external
+* files
+* themes
 
 Assets
 ------

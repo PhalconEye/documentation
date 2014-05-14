@@ -13,7 +13,6 @@ Package can be exported from system as zip archive and will have manifest file a
     │   ├── Controller
     │   ├── Form
     │   ├── Helper
-    │   ├── Migrations
     │   ├── Model
     │   ├── Plugin
     │   ├── View

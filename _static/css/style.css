@@ -74,3 +74,12 @@ img.align-center {
     width: 1100px;
     margin: 0 auto;
 }
+
+dd > p,
+dt > p {
+    margin: 0;
+}
+
+blockquote div {
+    padding: 10px 0 10px 20px;
+}
