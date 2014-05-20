@@ -40,7 +40,7 @@ You can use helpers inside your views, this allows to move server logic to php, 
 First parameter is helper class name (in that case, this will be Setting.php. Second parameter is namespace of this helper,
 by default this is 'engine', in that example - 'core'. It means, that this class is accessible at Core\Helper\Setting.
 After that call helper system returns your an object of Core\Helper\Setting, this object created only once and by other calls it
-taken from cache (by singletone logic). Cache in that case is DI, so you also can check if helper is loaded by accessing it in DI:
+taken from cache (by singleton logic). Cache in that case is DI, so you also can check if helper is loaded by accessing it in DI:
 
 .. code-block:: php
 
