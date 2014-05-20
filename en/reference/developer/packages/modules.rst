@@ -162,8 +162,8 @@ This directory contains views. There are directories with controller name inside
 Here some useful links about views:
 
 * `Views in PhalconEye`_ - about internal system of views.
-* `Views in Phalcon`_ - overall information about view in framework Phalcon.
-* `Volt template engine`_ - about views template engine.
+* `Views in Phalcon`_ - overall information about views in framework Phalcon.
+* `Volt template engine`_ - about view template engine.
 
 Widget
 ------

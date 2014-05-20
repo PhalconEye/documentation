@@ -108,7 +108,7 @@ View
 ----
 Let's look on index.volt example:
 
-.. code-block:: html
+.. code-block:: html+jinja
 
     {% extends "../../Core/View/layouts/widget.volt" %}
 
