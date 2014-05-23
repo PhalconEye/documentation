@@ -1,6 +1,58 @@
 Languages And Translations
 ==========================
-@TODO
- - general
- - tools
- - js translations
+Multilanguages are supported out of the box. By default translation works from English to other languages (texts written in English).
+
+Translation system works in two modes:
+
+* **Development mode**. Translation stored in database. PhalconEye allows to add, edit, delete, translate such translations.
+  In this mode all translations that wasn't found in database - will be added automatically (it collects them).
+
+* **Production mode**. All translations stored in <LANGUAGE_UNIQ_KEY>.php file (e.g. "en.php"). There are no database queries or collection of not existing items.
+  Just collection of translations.
+
+Each language object contains name (title), unique key (e.g."en"), locale (e.g. en_US). It means that you can have two equals English but with different locales.
+
+Translation in controller:
+
+.. code-block:: php
+
+    <?php
+
+    // Get it from DI and translate.
+    $this->di->get('i18n')->_('Actions');
+
+    // Or like that.
+    $this->di->getI18n()->_('Options :one: and :two', ['one' => 1, 'two' => 2]);
+
+    // Or:
+    $this->di->getI18n()->query('Options :one: and :two', ['one' => 1, 'two' => 2]);
+
+Translation in view:
+
+.. code-block:: html+jinja
+
+    {{ 'Login'|i18n }}
+
+Different tools:
+
+.. code-block:: html+jinja
+
+    {# Format number according to current locale. #}
+    {# Output: 100.0 #}
+    {{ helper('formatter').formatNumber(100, php('\NumberFormatter::DECIMAL')) }}
+
+    {# Format currency according to current locale. #}
+    {# Output: $100 #}
+    {{ helper('formatter').formatCurrency(100) }}
+
+Current language and it's locale stored in session, so to change language:
+
+.. code-block:: php
+
+    <?php
+
+    $language = preg_replace("/[^A-Za-z0-9?!]/", '', $this->request->get('lang', 'string'));
+    if ($language && $languageObject = Language::findFirst("language = '" . $language . "'")) {
+        $this->di->get('session')->set('language', $languageObject->language);
+        $this->di->get('session')->set('locale', $languageObject->locale);
+    }

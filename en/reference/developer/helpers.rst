@@ -98,8 +98,8 @@ Here is list of available helpers:
 |              |                                             | * renderWidgetId($id, $params = []) - Render widget by ID from database.                                                   |
 |              |                                             | * widgetIsAllowed($params) - Check that widget is allowed by it's parameters.                                              |
 +--------------+---------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+
-| Security     | Core\\Helper\\Security                      | * isAllowed($resource, $action) - Check that current used is allowed to resource by action.                                |
-|              |                                             | * getAllowed($resource, $action) - Get allowed value for current user according to resource and action.                    |
+| Acl          | Core\\Helper\\Acl                           | * isAllowed($resource, $action) - Check that current used is allowed to resource by action.                                |
+|              |                                             | * getAllowed($resource, $valueName) - Get allowed value for current user according to resource and action.                 |
 +--------------+---------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+
 | Setting      | Core\\Helper\\Setting                       | * get($name, $default = null) - Get setting from database.                                                                 |
 +--------------+---------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+

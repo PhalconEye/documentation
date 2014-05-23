@@ -54,6 +54,10 @@ View has some additional methods and filters.
 
 .. code-block:: html+jinja
 
+    {# call php code: #}
+    {{ php('phpinfo()') }}
+    {{ helper('formatter').formatNumber(100, php('\NumberFormatter::DECIMAL')) }}
+
     {# classof (get_class in php): #}
     {% if classof(element) is 'FieldSet' %}
     ...
