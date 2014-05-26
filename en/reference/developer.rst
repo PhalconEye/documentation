@@ -5,7 +5,6 @@ Developer's guide
    :maxdepth: 2
 
    developer/structure
-   developer/performance
    developer/configuration
    developer/packages
    developer/models
