@@ -35,7 +35,7 @@ Helper class can be used in other places:
 
 Helper creation
 ---------------
-To create helper you need extend it from Engine\\Helper:
+To create helper you need extend it from Engine\\Helper and write your methods:
 
 .. code-block:: php
 
@@ -43,14 +43,10 @@ To create helper you need extend it from Engine\\Helper:
 
     class NewHelper extends \Engine\Helper
     {
-        protected function _goodMethod(){} // Will be accessible as $helper->goodMethod();
+        public function someMethod1(){}
 
-        private function _inaccessibleMethod(){} // Can't be accessible.
-
-        public function badMethod(){} // Can't be accessible.
+        public function someMethod2(){}
     }
-
-Helper doesn't use public methods. It has own wrapper that calls only protected methods. Private methods for logical separation.
 
 Existing helpers
 ----------------
@@ -69,9 +65,9 @@ Here is list of available helpers:
 |              |                                             | * paginatorUrl($pageNumber = null) - Generate url for paginator.                                                           |
 +--------------+---------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+
 | I18n         | Core\\Helper\\I18n                          | * add($translations, $params = []) - Add translation to temporary storage, this is for js translations.                    |
-|              |                                             | * _js($translations, $params = []) - Render js translations, $translations overrides current temporary storage.            |
-|              |                                             | * _clear() - clear temporary storage.                                                                                      |
-|              |                                             | * _render($translations = null) - Render translations, without params concatenation.                                       |
+|              |                                             | * js($translations, $params = []) - Render js translations, $translations overrides current temporary storage.             |
+|              |                                             | * clear() - clear temporary storage.                                                                                       |
+|              |                                             | * render($translations = null) - Render translations, without params concatenation.                                        |
 |              |                                             |                                                                                                                            |
 |              |                                             | All data after rendering placed in js variable "translatorData".                                                           |
 |              |                                             | Usage in php:                                                                                                              |

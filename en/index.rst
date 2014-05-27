@@ -19,7 +19,7 @@ Table of Contents
 .. toctree::
    :maxdepth: 4
 
-   reference/performance
+   reference/benchmarks
    reference/installation
    reference/user
    reference/developer
