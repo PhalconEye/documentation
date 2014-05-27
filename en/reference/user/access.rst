@@ -1,5 +1,6 @@
 Access Rights
 =============
+
 Access right allows to control some specific setting of your system.
 
 .. image:: /images/access_1.png
@@ -13,9 +14,9 @@ For example, we have two options for Page object:
 * "Show_views" is an action that allow to view counter of current page.
 * "Page_footer" is an option that store some additional html for page.
 
-Each of this option is connected to current selected role "Admin" (right top corner). You can setup this setting for each role.
+Each of these option is connected to current selected role "Admin" (right top corner). You can set this up for each role.
 
-To make it clear look on other example:
+To make it clear look at another example:
 
 .. image:: /images/access_3.png
     :align: center

@@ -1,9 +1,10 @@
 Welcome to PhalconEye's documentation!
 ======================================
-PhalconEye is CMS based on Phalcon PHP Framework. It contains basics for faster website development: modules, plugins, themes, etc.
 
-PhalconEye is more platform then CMS. It was created to help developer with website construction. So it is more developer oriented than
-enduser (like Joomla, Wordpress, etc).
+PhalconEye CMS is based on Phalcon PHP Framework. It contains basic building blocks for rapid development: modules, widgets, plugins and themes.
+
+Originally, it has been designed to help web developers kickstart their projects, and therefore it is more a development
+platform then general purpose Content Management Systems unlike others you might already be familiar with such as Joomla or Wordpress.
 
 What is Phalcon?
 ----------------

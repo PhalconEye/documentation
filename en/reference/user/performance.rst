@@ -1,5 +1,6 @@
 Performance settings
 ====================
+
 Performance form allows to setup some improvements in speed.
 
 .. image:: /images/performance_1.png
@@ -7,19 +8,17 @@ Performance form allows to setup some improvements in speed.
 
 Fields description:
 
-    **Cache prefix** - cache prefix in system, this is required if you have several systems in one cache system.
+    **Cache prefix** - cache prefix in system, required if you use shared caching system with other websites.
 
-    **Cache lifetime** - cache TTL (time to live), time that means is that pages will not be regenerated until at least
-    this much time has passed and a cache clearing event has happened.
+    **Cache lifetime** - cache TTL (time to live), maximum lifetime of cached data.
 
-    **Cache adapter** - you can select adapter for the cache: file, memcached, apc, mongo. What select is depends on your
-    system.
+    **Cache adapter** - you can select adapter for the cache: file, memcached, apc, mongo. Default is file and others require additional PHP extensions.
 
-    **Clear cache** - set flag if you want to clear current cache at form saving.
+    **Clear cache** - select to clear current cache.
 
 If "File" adapter is selected:
 
-    **Files location** - location of the cached data files.
+    **Files location** - path to a folder where cached data will be stored.
 
 If "Memcached" is selected:
 
@@ -27,9 +26,9 @@ If "Memcached" is selected:
 
     **Memcached port** - server port.
 
-    **Create a persistent connection to memcached** - will create connection once on request.
+    **Create a persistent connection to memcached** - will create per-request persistent connection.
 
-If "APC" adapter is selected there no any additional settings.
+If "APC" adapter has no additional settings.
 
 If "Mongo" adapter is selected:
 

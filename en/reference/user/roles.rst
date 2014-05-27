@@ -1,19 +1,30 @@
 Role management
 ===============
+
+PhalconEye enables Administrators to define privileged groups of users.
+
 .. image:: /images/roles_1.png
     :align: center
 
-To create new role navigate to menu item "Create new role" at top navigation bar. New role form is very simple:
+To add a new Role go to "Create new role" from top navigation bar and fill-in the form:
 
 .. image:: /images/roles_2.png
     :align: center
 
 Fields description:
 
-    **Name** - role name in system.
+    **Name** - name of the new Role
 
-    **Description** - short description of the role.
+    **Description** - short description of the Role
 
-    **Is Default** - If checkbox is set new role will be default in system (it means that all new users will be assigned to this role).
+    **Is Default** - whether the Role should be assigned to all new users
 
-There are 3 system roles: Admin, User, Guest. This roles can't be removed. All other roles (created by user) - can be removed via grid action.
+By default PhalconEye comes with 3 system Roles:
+
+* **Admin** - administrators who can access backend of the CMS
+* **User** - this is the default Role for users who register on your website
+* **Guest** - all visitors
+
+These system Roles can not be deleted as opposed to new Roles created by Administrators, which can be removed via grid_ system.
+
+.. _grid: grid.html

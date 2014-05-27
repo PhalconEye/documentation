@@ -1,45 +1,54 @@
 Menus
 =====
-Menus has menu items. So you can create new menu by clicking to the "Create new menu" from top navigation and by entering the menu name.
 
-To manage items push "Manage" link at actions column on required row:
+To add a menu click "Create new menu" from the top navigation and give it some unique name.
+Like in every CMS menus consist of menu items, which can be standalone items or other nested menus.
+
+To manage menu items click "Manage" link from actions column:
 
 .. image:: /images/menus_1.png
     :align: center
 
-Here you can manage items. If you want to change their order - just drag it. Each item can have more items. To manage
-sub items - push on button "Manage". Nesting depth isn't limited.
+Use drag and drop if you need to re-arrange their order.
+Each menu item can have its own nested items creating a sub-menu tree structure.
+PhalconEye does not limit the depth of nesting! Feel free to create as complicated tree as you need.
 
-Adding or editing item:
+Adding and editing items
+------------------------
 
 .. image:: /images/menus_2.png
     :align: center
 
 Fields description:
 
-    **Title** - item title in menu.
+    **Title** - name of the menu item.
 
-    **Target** - this is css attribute "target" of the link, it defines link behaviour.
+    **Target** - this is HTML link attribute "target" which defines click behaviour.
 
-    **Select url type** - url can be a direct url or a link to internal page. In second way "Url" field will be hidden and "Page" field will be shown.
+    **Select url type** - switch between an absolute (direct) url or link to one of CMS pages.
 
-    **Url** - (shown only when url type is "Url") direct link.
+    **Url** - absolute (direct) link (shown only if url type above is "Url")
 
-    **Page** - (shown only when url type is "System page") in that case you will need to start typing the page name, autocomplete will suggest you
-    pages. You need to type full page name.
+    **Page** - start typing name of a page_ , a list of potential options will appear (shown only if url type above is "System page")
 
-    **OnClick** - this is css attribute, this code will be pasted into onclick attribute of the link.
+    **OnClick** - this is a html attribute - javascript code, which will be executed once the item is clicked
 
-    **Tooltip** - tooltip text of the menu item, can be a html.
+    **Tooltip** - optional tooltip text for the item.
 
-    **Tooltip position** - defines tooltip position: top, left, right, bottom.
+    **Tooltip position** - defines position of the tooltip message: top, left, right, bottom.
 
-    **Select icon** - you can define image to menu item (icon). Image size will be limited only by css, so be careful when choosing big image.
+    **Select icon** - optionally you can select an image for the item (icon).
+    Note: The icon will not be re-sized so be careful when choosing big images.
 
-    **Icon position** - define icon position towards menu item text. Works only when icon is selected.
+    **Icon position** - defines alignment of the icon against item's Title (either Left or Right)
 
-    **Languages** - define in what languages this menu can be shown. If anything selected - available at all languages.
+    **Languages** - defines the target languages_ for the item on which it will be visible.
 
-    **Roles** - define what role can view this menu item. If anything selected - everybody can view this menu item.
+    **Roles** - select target Roles_ for the item.
+    If any Role is chosen the item will be restricted only to users who belong to the Role
 
-    **Is Enabled** - this menu item is enabled?
+    **Is Enabled** - whether or not the item should be visible
+
+.. _page: pages.html
+.. _Roles: roles.html
+.. _languages: languages.html

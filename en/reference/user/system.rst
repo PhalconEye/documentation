@@ -1,15 +1,14 @@
 System settings
 ===============
-System settings form:
 
 .. image:: /images/settings_1.png
     :align: center
 
 Fields description:
 
-    **Site name** - your site name, will be placed in all pages of your website.
+    **Site name** - name of your website, which will be used as prefix in browser's title bar.
 
-    **Theme** - select your current theme.
+    **Theme** - select front-end theme.
 
-    **Default language** - select default language of the site. If "Auto-detect" is selected - CMS will try to
-    detect client's locale and set proper language.
+    **Default language** - default front-end language. If "Auto-detect" is selected PhalconEye will try to
+    figure out users' locale and set appropriate language.

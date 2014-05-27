@@ -1,27 +1,29 @@
 User management
 ===============
-CMS has simple user management: create new user, edit, delete, browse.
 
-User browsing is implemented via grid:
+The CMS enables you to create, edit, delete and browse users in a very simple manner.
+
+Browsing users is implemented via a grid_ system (built into the CMS):
 
 .. image:: /images/users_1.png
     :align: center
 
-To create new user navigate to menu item "Create new user" at top navigation bar. New user form is very simple:
+To add a new user simply go to "Create new user" from top navigation bar and fill in the form:
 
 .. image:: /images/users_2.png
     :align: center
 
 Fields description:
 
-    **Username** - user shortname (nickname).
+    **Username** - user login (nickname)
 
-    **Password** - user password.
+    **Password** - user password
 
-    **Email** - user email.
+    **Email** - user email
 
-    **Role** - user role, available roles can be managed_.
+    **Role** - user role_ (or category)
 
-To delete user - go to grid, find required row, push link "Delete" located at that row in "Actions" column and confirm you request.
+To delete user - search for appropriate record via the grid and click "Delete" link located in "Actions" column. You will be asked to confirm this action
 
-.. _managed: roles.html
+.. _grid: grid.html
+.. _role: roles.html

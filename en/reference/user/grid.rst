@@ -1,8 +1,9 @@
 Working With A Grid
 ===================
-Grid system allows fast and simple database rows browsing.
 
-Let's look at main components of the grid:
+Grid system allows fast and simple browsing of database rows.
+
+Let's take a look at main components of the grid:
 
 .. image:: /images/grid_1.png
     :align: center
