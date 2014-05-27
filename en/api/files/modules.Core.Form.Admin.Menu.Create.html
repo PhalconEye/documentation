@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+        <script type="text/javascript">
+        function loadExternalCodeSnippets() {
+            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+                var src = pre.getAttribute('data-src');
+                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+                var language = 'php';
+
+                var code = document.createElement('code');
+                code.className = 'language-' + language;
+
+                pre.textContent = '';
+
+                code.textContent = 'Loading…';
+
+                pre.appendChild(code);
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('GET', src, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+
+                            Prism.highlightElement(code);
+                        }
+                        else if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                        }
+                        else {
+                            code.textContent = '✖ Error: File does not exist or is empty';
+                        }
+                    }
+                };
+
+                xhr.send(null);
+            });
+        }
+
+        $(document).ready(function(){
+            loadExternalCodeSnippets();
+        });
+        $('#source-view').on('shown', function () {
+            loadExternalCodeSnippets();
+        })
+    </script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container header-container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li id="charts-menu">
+                        <a href="http://docs.phalconeye.com/">PhalconEye</a>
+                    </li>
+                    <li id="charts-menu">
+                        <a href="../graphs/class.html">Class diagram</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1697116580"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1697116580" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1950751022"></a>
+                                <a href="../namespaces/Core.html" style="margin-left: 30px; padding-left: 0">Core</a>
+            </div>
+            <div id="namespace-1950751022" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1437654460"></a>
+                                <a href="../namespaces/Core.Api.html" style="margin-left: 30px; padding-left: 0">Api</a>
+            </div>
+            <div id="namespace-1437654460" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Api.Acl.html">Acl</a></li>
+                                                    <li class="class"><a href="../classes/Core.Api.Auth.html">Auth</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1892544236"></a>
+                                <a href="../namespaces/Core.Command.html" style="margin-left: 30px; padding-left: 0">Command</a>
+            </div>
+            <div id="namespace-1892544236" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Command.Application.html">Application</a></li>
+                                                    <li class="class"><a href="../classes/Core.Command.Assets.html">Assets</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1230055745"></a>
+                                <a href="../namespaces/Core.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-1230055745" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2061529922"></a>
+                                <a href="../namespaces/Core.Controller.Grid.html" style="margin-left: 30px; padding-left: 0">Grid</a>
+            </div>
+            <div id="namespace-2061529922" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-20548471"></a>
+                                <a href="../namespaces/Core.Controller.Grid.Admin.html" style="margin-left: 30px; padding-left: 0">Admin</a>
+            </div>
+            <div id="namespace-20548471" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Controller.Grid.Admin.AccessGrid.html">AccessGrid</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.Grid.Admin.LanguageGrid.html">LanguageGrid</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.Grid.Admin.LanguageTranslationGrid.html">LanguageTranslationGrid</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.Grid.Admin.MenuGrid.html">MenuGrid</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.Grid.Admin.PageGrid.html">PageGrid</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Controller.Grid.CoreGrid.html">CoreGrid</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1896713530"></a>
+                                <a href="../namespaces/Core.Controller.Traits.html" style="margin-left: 30px; padding-left: 0">Traits</a>
+            </div>
+            <div id="namespace-1896713530" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/Core.Controller.Traits.JsTranslations.html">JsTranslations</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Controller.AbstractAdminController.html">AbstractAdminController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AbstractController.html">AbstractController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminAccessController.html">AdminAccessController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminFilesController.html">AdminFilesController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminIndexController.html">AdminIndexController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminLanguagesController.html">AdminLanguagesController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminMenusController.html">AdminMenusController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminModuleController.html">AdminModuleController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminPackagesController.html">AdminPackagesController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminPagesController.html">AdminPagesController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminPerformanceController.html">AdminPerformanceController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.AdminSettingsController.html">AdminSettingsController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.ErrorController.html">ErrorController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.IndexController.html">IndexController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.InstallController.html">InstallController</a></li>
+                                                    <li class="class"><a href="../classes/Core.Controller.PageController.html">PageController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1520338497"></a>
+                                <a href="../namespaces/Core.Form.html" style="margin-left: 30px; padding-left: 0">Form</a>
+            </div>
+            <div id="namespace-1520338497" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-204161506"></a>
+                                <a href="../namespaces/Core.Form.Admin.html" style="margin-left: 30px; padding-left: 0">Admin</a>
+            </div>
+            <div id="namespace-204161506" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1174030404"></a>
+                                <a href="../namespaces/Core.Form.Admin.Language.html" style="margin-left: 30px; padding-left: 0">Language</a>
+            </div>
+            <div id="namespace-1174030404" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Form.Admin.Language.Create.html">Create</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Language.CreateItem.html">CreateItem</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Language.Edit.html">Edit</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Language.EditItem.html">EditItem</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Language.Export.html">Export</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Language.Upload.html">Upload</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Language.Wizard.html">Wizard</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2086694884"></a>
+                                <a href="../namespaces/Core.Form.Admin.Menu.html" style="margin-left: 30px; padding-left: 0">Menu</a>
+            </div>
+            <div id="namespace-2086694884" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Form.Admin.Menu.Create.html">Create</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Menu.CreateItem.html">CreateItem</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Menu.Edit.html">Edit</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Menu.EditItem.html">EditItem</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1150136867"></a>
+                                <a href="../namespaces/Core.Form.Admin.Package.html" style="margin-left: 30px; padding-left: 0">Package</a>
+            </div>
+            <div id="namespace-1150136867" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1913181749"></a>
+                                <a href="../namespaces/Core.Form.Admin.Package.FieldSet.html" style="margin-left: 30px; padding-left: 0">FieldSet</a>
+            </div>
+            <div id="namespace-1913181749" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Form.Admin.Package.FieldSet.Widget.html">Widget</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Form.Admin.Package.Create.html">Create</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Package.Edit.html">Edit</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Package.Events.html">Events</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Package.Export.html">Export</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Package.Upload.html">Upload</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-647247102"></a>
+                                <a href="../namespaces/Core.Form.Admin.Page.html" style="margin-left: 30px; padding-left: 0">Page</a>
+            </div>
+            <div id="namespace-647247102" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Form.Admin.Page.Create.html">Create</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Page.Edit.html">Edit</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-790222140"></a>
+                                <a href="../namespaces/Core.Form.Admin.Setting.html" style="margin-left: 30px; padding-left: 0">Setting</a>
+            </div>
+            <div id="namespace-790222140" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Form.Admin.Setting.Performance.html">Performance</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Setting.System.html">System</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1240654844"></a>
+                                <a href="../namespaces/Core.Form.Admin.Widget.html" style="margin-left: 30px; padding-left: 0">Widget</a>
+            </div>
+            <div id="namespace-1240654844" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Form.Admin.Widget.Header.html">Header</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Admin.Widget.Menu.html">Menu</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-444226491"></a>
+                                <a href="../namespaces/Core.Form.Install.html" style="margin-left: 30px; padding-left: 0">Install</a>
+            </div>
+            <div id="namespace-444226491" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Form.Install.Database.html">Database</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.Install.Finish.html">Finish</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/Core.Form.EntityForm.html">EntityForm</a></li>
+                                                                            <li class="class"><a href="../classes/Core.Form.CoreForm.html">CoreForm</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.FileForm.html">FileForm</a></li>
+                                                    <li class="class"><a href="../classes/Core.Form.TextForm.html">TextForm</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-509388329"></a>
+                                <a href="../namespaces/Core.Helper.html" style="margin-left: 30px; padding-left: 0">Helper</a>
+            </div>
+            <div id="namespace-509388329" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Helper.Acl.html">Acl</a></li>
+                                                    <li class="class"><a href="../classes/Core.Helper.I18n.html">I18n</a></li>
+                                                    <li class="class"><a href="../classes/Core.Helper.Profiler.html">Profiler</a></li>
+                                                    <li class="class"><a href="../classes/Core.Helper.Renderer.html">Renderer</a></li>
+                                                    <li class="class"><a href="../classes/Core.Helper.Setting.html">Setting</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-562858286"></a>
+                                <a href="../namespaces/Core.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-562858286" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Model.Access.html">Access</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.Content.html">Content</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.Language.html">Language</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.LanguageTranslation.html">LanguageTranslation</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.Menu.html">Menu</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.MenuItem.html">MenuItem</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.Package.html">Package</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.PackageDependency.html">PackageDependency</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.Page.html">Page</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.Settings.html">Settings</a></li>
+                                                    <li class="class"><a href="../classes/Core.Model.Widget.html">Widget</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1785083185"></a>
+                                <a href="../namespaces/Core.Widget.html" style="margin-left: 30px; padding-left: 0">Widget</a>
+            </div>
+            <div id="namespace-1785083185" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-426047478"></a>
+                                <a href="../namespaces/Core.Widget.Header.html" style="margin-left: 30px; padding-left: 0">Header</a>
+            </div>
+            <div id="namespace-426047478" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Widget.Header.Controller.html">Controller</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1866238260"></a>
+                                <a href="../namespaces/Core.Widget.HtmlBlock.html" style="margin-left: 30px; padding-left: 0">HtmlBlock</a>
+            </div>
+            <div id="namespace-1866238260" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Widget.HtmlBlock.Controller.html">Controller</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-620030573"></a>
+                                <a href="../namespaces/Core.Widget.Menu.html" style="margin-left: 30px; padding-left: 0">Menu</a>
+            </div>
+            <div id="namespace-620030573" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Widget.Menu.Controller.html">Controller</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Core.Bootstrap.html">Bootstrap</a></li>
+                                                    <li class="class"><a href="../classes/Core.Installer.html">Installer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1052001802"></a>
+                                <a href="../namespaces/Engine.html" style="margin-left: 30px; padding-left: 0">Engine</a>
+            </div>
+            <div id="namespace-1052001802" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-601229003"></a>
+                                <a href="../namespaces/Engine.Api.html" style="margin-left: 30px; padding-left: 0">Api</a>
+            </div>
+            <div id="namespace-601229003" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Engine.Api.ApiInterface.html">ApiInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Engine.Api.AbstractApi.html">AbstractApi</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Api.Injector.html">Injector</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-286844509"></a>
+                                <a href="../namespaces/Engine.Asset.html" style="margin-left: 30px; padding-left: 0">Asset</a>
+            </div>
+            <div id="namespace-286844509" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-133423947"></a>
+                                <a href="../namespaces/Engine.Asset.Css.html" style="margin-left: 30px; padding-left: 0">Css</a>
+            </div>
+            <div id="namespace-133423947" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Asset.Css.Less.html">Less</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Asset.Manager.html">Manager</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-779145322"></a>
+                                <a href="../namespaces/Engine.Behaviour.html" style="margin-left: 30px; padding-left: 0">Behaviour</a>
+            </div>
+            <div id="namespace-779145322" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/Engine.Behaviour.TranslationBehaviour.html">TranslationBehaviour</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2005729879"></a>
+                                <a href="../namespaces/Engine.Cache.html" style="margin-left: 30px; padding-left: 0">Cache</a>
+            </div>
+            <div id="namespace-2005729879" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Cache.Dummy.html">Dummy</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Cache.System.html">System</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-407928785"></a>
+                                <a href="../namespaces/Engine.Console.html" style="margin-left: 30px; padding-left: 0">Console</a>
+            </div>
+            <div id="namespace-407928785" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-158540819"></a>
+                                <a href="../namespaces/Engine.Console.Command.html" style="margin-left: 30px; padding-left: 0">Command</a>
+            </div>
+            <div id="namespace-158540819" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Console.Command.Cache.html">Cache</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Console.Command.Database.html">Database</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Engine.Console.CommandInterface.html">CommandInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Engine.Console.AbstractCommand.html">AbstractCommand</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Console.CommandsException.html">CommandsException</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Console.ConsoleUtil.html">ConsoleUtil</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-34071265"></a>
+                                <a href="../namespaces/Engine.Db.html" style="margin-left: 30px; padding-left: 0">Db</a>
+            </div>
+            <div id="namespace-34071265" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1064695743"></a>
+                                <a href="../namespaces/Engine.Db.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-1064695743" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2037947640"></a>
+                                <a href="../namespaces/Engine.Db.Model.Annotations.html" style="margin-left: 30px; padding-left: 0">Annotations</a>
+            </div>
+            <div id="namespace-2037947640" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Db.Model.Annotations.Initializer.html">Initializer</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Db.Model.Annotations.Metadata.html">Metadata</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1652692449"></a>
+                                <a href="../namespaces/Engine.Db.Model.Behavior.html" style="margin-left: 30px; padding-left: 0">Behavior</a>
+            </div>
+            <div id="namespace-1652692449" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/Engine.Db.Model.Behavior.Sluggable.html">Sluggable</a></li>
+                                                    <li class="trait"><a href="../classes/Engine.Db.Model.Behavior.Sortable.html">Sortable</a></li>
+                                                    <li class="trait"><a href="../classes/Engine.Db.Model.Behavior.Timestampable.html">Timestampable</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Db.AbstractModel.html">AbstractModel</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Db.Schema.html">Schema</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-162708908"></a>
+                                <a href="../namespaces/Engine.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-162708908" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Exception.PrettyExceptions.html">PrettyExceptions</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2070341950"></a>
+                                <a href="../namespaces/Engine.Form.html" style="margin-left: 30px; padding-left: 0">Form</a>
+            </div>
+            <div id="namespace-2070341950" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1735213906"></a>
+                                <a href="../namespaces/Engine.Form.Behaviour.html" style="margin-left: 30px; padding-left: 0">Behaviour</a>
+            </div>
+            <div id="namespace-1735213906" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/Engine.Form.Behaviour.ContainerBehaviour.html">ContainerBehaviour</a></li>
+                                                    <li class="trait"><a href="../classes/Engine.Form.Behaviour.ElementsBehaviour.html">ElementsBehaviour</a></li>
+                                                    <li class="trait"><a href="../classes/Engine.Form.Behaviour.FieldSetBehaviour.html">FieldSetBehaviour</a></li>
+                                                    <li class="trait"><a href="../classes/Engine.Form.Behaviour.FormBehaviour.html">FormBehaviour</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-295531405"></a>
+                                <a href="../namespaces/Engine.Form.Element.html" style="margin-left: 30px; padding-left: 0">Element</a>
+            </div>
+            <div id="namespace-295531405" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Form.Element.AbstractInput.html">AbstractInput</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.Button.html">Button</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.ButtonLink.html">ButtonLink</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.Checkbox.html">Checkbox</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.CkEditor.html">CkEditor</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.File.html">File</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.Heading.html">Heading</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.Hidden.html">Hidden</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.Html.html">Html</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.MultiCheckbox.html">MultiCheckbox</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.Password.html">Password</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.Radio.html">Radio</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.RemoteFile.html">RemoteFile</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.Select.html">Select</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.Text.html">Text</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Element.TextArea.html">TextArea</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-170997592"></a>
+                                <a href="../namespaces/Engine.Form.Validator.html" style="margin-left: 30px; padding-left: 0">Validator</a>
+            </div>
+            <div id="namespace-170997592" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Form.Validator.Image.html">Image</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Validator.MimeType.html">MimeType</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Validator.Regex.html">Regex</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Engine.Form.ElementContainerInterface.html">ElementContainerInterface</a></li>
+                                                    <li class="interface"><a href="../classes/Engine.Form.ElementInterface.html">ElementInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Engine.Form.AbstractElement.html">AbstractElement</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.AbstractForm.html">AbstractForm</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.ConditionResolver.html">ConditionResolver</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.FieldSet.html">FieldSet</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Form.Validation.html">Validation</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-512722604"></a>
+                                <a href="../namespaces/Engine.Grid.html" style="margin-left: 30px; padding-left: 0">Grid</a>
+            </div>
+            <div id="namespace-512722604" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1771196604"></a>
+                                <a href="../namespaces/Engine.Grid.Behaviour.html" style="margin-left: 30px; padding-left: 0">Behaviour</a>
+            </div>
+            <div id="namespace-1771196604" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/Engine.Grid.Behaviour.ColumnBehaviour.html">ColumnBehaviour</a></li>
+                                                                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1466607281"></a>
+                                <a href="../namespaces/Engine.Grid.Source.html" style="margin-left: 30px; padding-left: 0">Source</a>
+            </div>
+            <div id="namespace-1466607281" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Engine.Grid.Source.ResolverInterface.html">ResolverInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Engine.Grid.Source.AbstractResolver.html">AbstractResolver</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Grid.Source.ArrayResolver.html">ArrayResolver</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Grid.Source.BuilderResolver.html">BuilderResolver</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Engine.Grid.GridInterface.html">GridInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Engine.Grid.AbstractGrid.html">AbstractGrid</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Grid.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Grid.GridItem.html">GridItem</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-685584562"></a>
+                                <a href="../namespaces/Engine.Helper.html" style="margin-left: 30px; padding-left: 0">Helper</a>
+            </div>
+            <div id="namespace-685584562" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Helper.Assets.html">Assets</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Helper.Formatter.html">Formatter</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Helper.Url.html">Url</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-189676044"></a>
+                                <a href="../namespaces/Engine.Package.html" style="margin-left: 30px; padding-left: 0">Package</a>
+            </div>
+            <div id="namespace-189676044" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-978186193"></a>
+                                <a href="../namespaces/Engine.Package.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-978186193" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Package.Exception.InvalidManifest.html">InvalidManifest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1050721177"></a>
+                                <a href="../namespaces/Engine.Package.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-1050721177" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Package.Model.AbstractPackage.html">AbstractPackage</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Package.Model.AbstractPackageDependency.html">AbstractPackageDependency</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Package.Manager.html">Manager</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Package.PackageException.html">PackageException</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Package.Utilities.html">Utilities</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-921544"></a>
+                                <a href="../namespaces/Engine.Plugin.html" style="margin-left: 30px; padding-left: 0">Plugin</a>
+            </div>
+            <div id="namespace-921544" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Plugin.CacheAnnotation.html">CacheAnnotation</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Plugin.DispatchErrorHandler.html">DispatchErrorHandler</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-131294651"></a>
+                                <a href="../namespaces/Engine.Translation.html" style="margin-left: 30px; padding-left: 0">Translation</a>
+            </div>
+            <div id="namespace-131294651" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Engine.Translation.TranslationModelInterface.html">TranslationModelInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Engine.Translation.Db.html">Db</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2070954613"></a>
+                                <a href="../namespaces/Engine.View.html" style="margin-left: 30px; padding-left: 0">View</a>
+            </div>
+            <div id="namespace-2070954613" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.View.Extension.html">Extension</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2136017891"></a>
+                                <a href="../namespaces/Engine.Widget.html" style="margin-left: 30px; padding-left: 0">Widget</a>
+            </div>
+            <div id="namespace-2136017891" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Engine.Widget.Catalog.html">Catalog</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Widget.Controller.html">Controller</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Widget.Element.html">Element</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Engine.BootstrapInterface.html">BootstrapInterface</a></li>
+                                                                            <li class="trait"><a href="../classes/Engine.ApplicationInitialization.html">ApplicationInitialization</a></li>
+                                                                            <li class="class"><a href="../classes/Engine.Application.html">Application</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Bootstrap.html">Bootstrap</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Cli.html">Cli</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Config.html">Config</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Dispatcher.html">Dispatcher</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Exception.html">Exception</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Helper.html">Helper</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Installer.html">Installer</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Navigation.html">Navigation</a></li>
+                                                    <li class="class"><a href="../classes/Engine.Profiler.html">Profiler</a></li>
+                                                    <li class="class"><a href="../classes/Engine.View.html">View</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-23474584"></a>
+                                <a href="../namespaces/User.html" style="margin-left: 30px; padding-left: 0">User</a>
+            </div>
+            <div id="namespace-23474584" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-238528386"></a>
+                                <a href="../namespaces/User.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-238528386" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-206565233"></a>
+                                <a href="../namespaces/User.Controller.Grid.html" style="margin-left: 30px; padding-left: 0">Grid</a>
+            </div>
+            <div id="namespace-206565233" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-983823318"></a>
+                                <a href="../namespaces/User.Controller.Grid.Admin.html" style="margin-left: 30px; padding-left: 0">Admin</a>
+            </div>
+            <div id="namespace-983823318" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/User.Controller.Grid.Admin.RoleGrid.html">RoleGrid</a></li>
+                                                    <li class="class"><a href="../classes/User.Controller.Grid.Admin.UserGrid.html">UserGrid</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/User.Controller.AdminUsersController.html">AdminUsersController</a></li>
+                                                    <li class="class"><a href="../classes/User.Controller.AuthController.html">AuthController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1413466927"></a>
+                                <a href="../namespaces/User.Form.html" style="margin-left: 30px; padding-left: 0">Form</a>
+            </div>
+            <div id="namespace-1413466927" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-341867594"></a>
+                                <a href="../namespaces/User.Form.Admin.html" style="margin-left: 30px; padding-left: 0">Admin</a>
+            </div>
+            <div id="namespace-341867594" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/User.Form.Admin.Create.html">Create</a></li>
+                                                    <li class="class"><a href="../classes/User.Form.Admin.Edit.html">Edit</a></li>
+                                                    <li class="class"><a href="../classes/User.Form.Admin.RoleCreate.html">RoleCreate</a></li>
+                                                    <li class="class"><a href="../classes/User.Form.Admin.RoleEdit.html">RoleEdit</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1064604238"></a>
+                                <a href="../namespaces/User.Form.Auth.html" style="margin-left: 30px; padding-left: 0">Auth</a>
+            </div>
+            <div id="namespace-1064604238" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/User.Form.Auth.Login.html">Login</a></li>
+                                                    <li class="class"><a href="../classes/User.Form.Auth.Register.html">Register</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1022361532"></a>
+                                <a href="../namespaces/User.Helper.html" style="margin-left: 30px; padding-left: 0">Helper</a>
+            </div>
+            <div id="namespace-1022361532" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/User.Helper.User.html">User</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2073083081"></a>
+                                <a href="../namespaces/User.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-2073083081" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/User.Model.Role.html">Role</a></li>
+                                                    <li class="class"><a href="../classes/User.Model.User.html">User</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/User.Bootstrap.html">Bootstrap</a></li>
+                                                    <li class="class"><a href="../classes/User.Installer.html">Installer</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content file">
+                    <nav>
+                                                                    </nav>
+
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+                    <h1><small>modules/Core/Form/Admin/Menu</small>Create.php</h1>
+                    <p><em></em></p>
+                    
+
+                    
+                    
+                                        <h2>Classes</h2>
+                    <table class="table table-hover">
+                                            <tr>
+                            <td><a href="../classes/Core.Form.Admin.Menu.Create.html">Create</a></td>
+                            <td><em>Edit language item.</em></td>
+                        </tr>
+                                        </table>
+                                    </div>
+
+                <aside class="span4 detailsbar">
+                    <dl>
+                                                    <dt>Package</dt>
+                            <dd><div class="namespace-wrapper"></div></dd>
+                        
+                        
+                    </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                            </table>
+
+                </aside>
+            </div>
+
+            
+            
+        </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label"></h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/modules/Core/Form/Admin/Menu/Create.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

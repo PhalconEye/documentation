@@ -70,7 +70,7 @@
                                                                                                     <li><a href="#modules/User/Form/Admin/Edit.php"><i class="icon-file"></i> modules/User/Form/Admin/Edit.php</a></li>
                                                                                                     <li><a href="#engine/Translation/TranslationModelInterface.php"><i class="icon-file"></i> engine/Translation/TranslationModelInterface.php</a></li>
                                                                                                     <li><a href="#modules/Core/Form/Admin/Language/Wizard.php"><i class="icon-file"></i> modules/Core/Form/Admin/Language/Wizard.php</a></li>
-                                                                                                    <li><a href="#modules/Core/Helper/Security.php"><i class="icon-file"></i> modules/Core/Helper/Security.php</a></li>
+                                                                                                    <li><a href="#modules/Core/Helper/Acl.php"><i class="icon-file"></i> modules/Core/Helper/Acl.php</a></li>
                                                                                                     <li><a href="#modules/Core/Model/LanguageTranslation.php"><i class="icon-file"></i> modules/Core/Model/LanguageTranslation.php</a></li>
                                                                                                     <li><a href="#modules/Core/Api/Acl.php"><i class="icon-file"></i> modules/Core/Api/Acl.php</a></li>
                                                                                                     <li><a href="#engine/Profiler.php"><i class="icon-file"></i> engine/Profiler.php</a></li>
@@ -91,7 +91,6 @@
                                                                                                     <li><a href="#modules/Core/Form/Admin/Package/Create.php"><i class="icon-file"></i> modules/Core/Form/Admin/Package/Create.php</a></li>
                                                                                                     <li><a href="#engine/Grid/Source/ArrayResolver.php"><i class="icon-file"></i> engine/Grid/Source/ArrayResolver.php</a></li>
                                                                                                     <li><a href="#modules/Core/Controller/IndexController.php"><i class="icon-file"></i> modules/Core/Controller/IndexController.php</a></li>
-                                                                                                    <li><a href="#engine/Form/Element.php"><i class="icon-file"></i> engine/Form/Element.php</a></li>
                                                                                                     <li><a href="#modules/Core/Model/Widget.php"><i class="icon-file"></i> modules/Core/Model/Widget.php</a></li>
                                                                                                     <li><a href="#engine/Navigation.php"><i class="icon-file"></i> engine/Navigation.php</a></li>
                                                                                                     <li><a href="#modules/Core/Controller/AdminAccessController.php"><i class="icon-file"></i> modules/Core/Controller/AdminAccessController.php</a></li>
@@ -101,6 +100,7 @@
                                                                                                     <li><a href="#engine/Widget/Element.php"><i class="icon-file"></i> engine/Widget/Element.php</a></li>
                                                                                                     <li><a href="#modules/Core/Form/Admin/Language/CreateItem.php"><i class="icon-file"></i> modules/Core/Form/Admin/Language/CreateItem.php</a></li>
                                                                                                     <li><a href="#engine/Form/Element/CkEditor.php"><i class="icon-file"></i> engine/Form/Element/CkEditor.php</a></li>
+                                                                                                    <li><a href="#engine/View.php"><i class="icon-file"></i> engine/View.php</a></li>
                                                                                                     <li><a href="#modules/Core/Controller/AdminPerformanceController.php"><i class="icon-file"></i> modules/Core/Controller/AdminPerformanceController.php</a></li>
                                                                                                     <li><a href="#engine/Form/Element/Hidden.php"><i class="icon-file"></i> engine/Form/Element/Hidden.php</a></li>
                                                                                                     <li><a href="#engine/Console/Command/Cache.php"><i class="icon-file"></i> engine/Console/Command/Cache.php</a></li>
@@ -130,6 +130,7 @@
                                                                                                     <li><a href="#engine/Exception.php"><i class="icon-file"></i> engine/Exception.php</a></li>
                                                                                                     <li><a href="#modules/Core/Form/Admin/Setting/System.php"><i class="icon-file"></i> modules/Core/Form/Admin/Setting/System.php</a></li>
                                                                                                     <li><a href="#modules/Core/Controller/AdminPagesController.php"><i class="icon-file"></i> modules/Core/Controller/AdminPagesController.php</a></li>
+                                                                                                    <li><a href="#engine/Cache/System.php"><i class="icon-file"></i> engine/Cache/System.php</a></li>
                                                                                                     <li><a href="#modules/User/Form/Admin/Create.php"><i class="icon-file"></i> modules/User/Form/Admin/Create.php</a></li>
                                                                                                     <li><a href="#engine/Translation/Db.php"><i class="icon-file"></i> engine/Translation/Db.php</a></li>
                                                                                                     <li><a href="#modules/Core/Form/Install/Finish.php"><i class="icon-file"></i> modules/Core/Form/Install/Finish.php</a></li>
@@ -489,10 +490,10 @@
                         </div>
                                     </div>
                             <div class="package-contents">
-                                            <a name="modules/Core/Helper/Security.php" id="modules/Core/Helper/Security.php"></a>
+                                            <a name="modules/Core/Helper/Acl.php" id="modules/Core/Helper/Acl.php"></a>
                         <h3>
                             <i class="icon-file"></i>
-                            modules/Core/Helper/Security.php
+                            modules/Core/Helper/Acl.php
                             <small style="float: right;padding-right: 10px;">1</small>
                         </h3>
                         <div>
@@ -672,12 +673,12 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>539</td>
+                                        <td>540</td>
                                         <td>Argument $data is missing from the Docblock of _validateElements()</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>561</td>
+                                        <td>562</td>
                                         <td>Argument $data is missing from the Docblock of _validateElement()</td>
                                     </tr>
                                                             </tbody>
@@ -715,7 +716,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             modules/Core/Form/Admin/Page/Create.php
-                            <small style="float: right;padding-right: 10px;">1</small>
+                            <small style="float: right;padding-right: 10px;">2</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -731,6 +732,11 @@
                                         <td>error</td>
                                         <td>0</td>
                                         <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>No summary for property $_currentPageObject</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -1004,7 +1010,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             modules/Core/Model/Settings.php
-                            <small style="float: right;padding-right: 10px;">3</small>
+                            <small style="float: right;padding-right: 10px;">5</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -1023,12 +1029,22 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>42</td>
+                                        <td>66</td>
+                                        <td>Argument $data is missing from the Docblock of save()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>66</td>
+                                        <td>Argument $whiteList is missing from the Docblock of save()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>54</td>
                                         <td>No summary for property $name</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>47</td>
+                                        <td>59</td>
                                         <td>No summary for property $value</td>
                                     </tr>
                                                             </tbody>
@@ -1123,32 +1139,6 @@
                         <h3>
                             <i class="icon-file"></i>
                             modules/Core/Controller/IndexController.php
-                            <small style="float: right;padding-right: 10px;">1</small>
-                        </h3>
-                        <div>
-                            <table class="table markers table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Line</th>
-                                    <th>Description</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>0</td>
-                                        <td>No summary was found for this file</td>
-                                    </tr>
-                                                            </tbody>
-                            </table>
-                        </div>
-                                    </div>
-                            <div class="package-contents">
-                                            <a name="engine/Form/Element.php" id="engine/Form/Element.php"></a>
-                        <h3>
-                            <i class="icon-file"></i>
-                            engine/Form/Element.php
                             <small style="float: right;padding-right: 10px;">1</small>
                         </h3>
                         <div>
@@ -1423,6 +1413,32 @@
                         <h3>
                             <i class="icon-file"></i>
                             engine/Form/Element/CkEditor.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="engine/View.php" id="engine/View.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            engine/View.php
                             <small style="float: right;padding-right: 10px;">1</small>
                         </h3>
                         <div>
@@ -1722,27 +1738,27 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>54</td>
+                                        <td>60</td>
                                         <td>No summary for property $id</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>59</td>
+                                        <td>65</td>
                                         <td>No summary for property $role_id</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>65</td>
+                                        <td>71</td>
                                         <td>No summary for property $username</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>70</td>
+                                        <td>76</td>
                                         <td>No summary for property $password</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>76</td>
+                                        <td>82</td>
                                         <td>No summary for property $email</td>
                                     </tr>
                                                             </tbody>
@@ -2232,6 +2248,32 @@
                         <h3>
                             <i class="icon-file"></i>
                             modules/Core/Controller/AdminPagesController.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="engine/Cache/System.php" id="engine/Cache/System.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            engine/Cache/System.php
                             <small style="float: right;padding-right: 10px;">1</small>
                         </h3>
                         <div>
@@ -4019,12 +4061,12 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>48</td>
+                                        <td>47</td>
                                         <td>No summary for property $id</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>53</td>
+                                        <td>52</td>
                                         <td>No summary for property $name</td>
                                     </tr>
                                                             </tbody>
@@ -4107,52 +4149,52 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>79</td>
+                                        <td>96</td>
                                         <td>No summary for property $id</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>84</td>
+                                        <td>101</td>
                                         <td>No summary for property $title</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>89</td>
+                                        <td>106</td>
                                         <td>No summary for property $type</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>94</td>
+                                        <td>111</td>
                                         <td>No summary for property $url</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>99</td>
+                                        <td>116</td>
                                         <td>No summary for property $description</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>104</td>
+                                        <td>121</td>
                                         <td>No summary for property $keywords</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>109</td>
+                                        <td>126</td>
                                         <td>No summary for property $layout</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>114</td>
+                                        <td>131</td>
                                         <td>No summary for property $controller</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>119</td>
+                                        <td>136</td>
                                         <td>No summary for property $roles</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>124</td>
+                                        <td>141</td>
                                         <td>No summary for property $view_count</td>
                                     </tr>
                                                             </tbody>
@@ -5015,32 +5057,32 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>49</td>
+                                        <td>61</td>
                                         <td>No summary for property $id</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>54</td>
+                                        <td>66</td>
                                         <td>No summary for property $name</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>59</td>
+                                        <td>71</td>
                                         <td>No summary for property $description</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>64</td>
+                                        <td>76</td>
                                         <td>No summary for property $is_default</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>69</td>
+                                        <td>81</td>
                                         <td>No summary for property $type</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>74</td>
+                                        <td>86</td>
                                         <td>No summary for property $undeletable</td>
                                     </tr>
                                                             </tbody>

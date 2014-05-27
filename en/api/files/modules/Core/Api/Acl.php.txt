@@ -48,7 +48,7 @@ class Acl extends AbstractApi
         /**
          * Acl cache key.
          */
-        ACL_CACHE_KEY = "acl_data.cache";
+        CACHE_KEY_ACL = "acl_data";
 
     const
         /**
@@ -88,7 +88,7 @@ class Acl extends AbstractApi
     {
         if (!$this->_acl) {
             $cacheData = $this->getDI()->get('cacheData');
-            $acl = $cacheData->get(self::ACL_CACHE_KEY);
+            $acl = $cacheData->get(self::CACHE_KEY_ACL);
             if ($acl === null) {
                 $acl = new AclMemory();
                 $acl->setDefaultAction(PhalconAcl::DENY);
@@ -112,13 +112,11 @@ class Acl extends AbstractApi
 
                 // Getting objects that is in acl.
                 // Looking for all models in modelsDir and check @Acl annotation.
-                $objects = [self::ACL_ADMIN_AREA => ['actions' => ['access']]];
-                $this->_addResources($acl, $objects);
+                $objects = $this->_addResources($acl, [self::ACL_ADMIN_AREA => ['actions' => ['access']]]);
 
                 // Load from database.
                 $access = Access::find();
                 foreach ($access as $item) {
-
                     $value = $item->value;
 
                     if (
@@ -129,7 +127,7 @@ class Acl extends AbstractApi
                         $acl->$value($roleNames[$item->role_id], $item->object, $item->action);
                     }
                 }
-                $cacheData->save(self::ACL_CACHE_KEY, $acl, 2592000); // 30 days cache.
+                $cacheData->save(self::CACHE_KEY_ACL, $acl, 2592000); // 30 days cache.
             }
             $this->_acl = $acl;
         }
@@ -138,17 +136,17 @@ class Acl extends AbstractApi
     }
 
     /**
-     * Forward methods to acl object.
+     * Wrapper to real isAllowed method.
      *
-     * @param string $name      Method name.
-     * @param array  $arguments Method arguments.
+     * @param string $role     Role name.
+     * @param string $resource Resource name.
+     * @param string $access   Access name.
      *
-     * @return mixed
+     * @return boolean
      */
-    public function __call($name, $arguments)
+    public function isAllowed($role, $resource, $access)
     {
-        $acl = $this->getAcl();
-        return call_user_func_array(array($acl, $name), $arguments);
+        return $this->getAcl()->isAllowed($role, $resource, $access);
     }
 
     /**
@@ -187,6 +185,7 @@ class Acl extends AbstractApi
     {
         $object = new \stdClass();
         $object->name = $objectName;
+        $object->module = ucfirst(Application::SYSTEM_DEFAULT_MODULE);
         $object->actions = [];
         $object->options = [];
 
@@ -194,6 +193,11 @@ class Acl extends AbstractApi
             $object->actions = ['access'];
 
             return $object;
+        }
+
+        $objectNameParts = explode('\\', $objectName);
+        if (count($objectNameParts) > 1) {
+            $object->module = $objectNameParts[1];
         }
 
         $reader = new \Phalcon\Annotations\Adapter\Memory();
@@ -222,7 +226,17 @@ class Acl extends AbstractApi
      */
     public function clearAcl()
     {
-        $this->getDI()->get('cacheData')->delete(self::ACL_CACHE_KEY);
+        $this->getDI()->get('cacheData')->delete(self::CACHE_KEY_ACL);
+    }
+
+    /**
+     * Return an array with every resource registered in the list.
+     *
+     * @return \Phalcon\Acl\Resource[]
+     */
+    public function getResources()
+    {
+        $this->getAcl()->getResources();
     }
 
     /**
@@ -245,15 +259,11 @@ class Acl extends AbstractApi
             Text::startsWith($controller, 'Admin', true) &&
             $acl->isAllowed($viewer->getRole()->name, self::ACL_ADMIN_AREA, 'access') != PhalconAcl::ALLOW
         ) {
-            return $dispatcher->forward(
-                [
-                    'module' => Application::SYSTEM_DEFAULT_MODULE,
-                    'namespace' => ucfirst(Application::SYSTEM_DEFAULT_MODULE) . '\Controller',
-                    "controller" => 'Error',
-                    "action" => 'show404'
-                ]
+            $this->getDI()->getEventsManager()->fire(
+                'dispatch:beforeException',
+                $dispatcher,
+                new Dispatcher\Exception()
             );
-
         }
 
         return !$event->isStopped();
@@ -264,6 +274,8 @@ class Acl extends AbstractApi
      *
      * @param AclMemory $acl     Acl object.
      * @param array     $objects Related objects collection.
+     *
+     * @return array
      */
     protected function _addResources($acl, $objects)
     {
@@ -296,5 +308,7 @@ class Acl extends AbstractApi
                 }
             }
         }
+
+        return $objects;
     }
 }

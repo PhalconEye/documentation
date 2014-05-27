@@ -19,6 +19,7 @@
 namespace Core\Controller;
 
 use Core\Model\Package;
+use Core\Model\Settings;
 use Engine\Navigation;
 use Engine\Package\Manager;
 
@@ -143,6 +144,9 @@ abstract class AbstractAdminController extends AbstractController
                     'href' => $href,
                     'prepend' => '<i class="glyphicon glyphicon-th-large"></i>'
                 ];
+                if ($activeItem == 'admin/module' && (string) $path[3] == $module->name) {
+                    $activeItem = $href;
+                }
             }
 
             if (!empty($modulesMenuItems)) {
@@ -190,6 +194,16 @@ abstract class AbstractAdminController extends AbstractController
             ->addJs('external/bootstrap/js/bootstrap.min.js')
             ->addJs('external/bootstrap/js/bootstrap-switch.min.js')
             ->addJs('external/ckeditor/ckeditor.js');
+    }
+
+    /**
+     * Clear cache
+     *
+     * @return void
+     */
+    protected function _clearCache()
+    {
+        $this->app->clearCache(PUBLIC_PATH . '/themes/' . Settings::getValue('system', 'theme'));
     }
 }
 

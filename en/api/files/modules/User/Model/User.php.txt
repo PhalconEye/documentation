@@ -43,6 +43,12 @@ use Phalcon\Mvc\Model\Validator\Uniqueness;
  */
 class User extends AbstractModel
 {
+    const
+        /**
+         * Cache prefix.
+         */
+        CACHE_PREFIX = 'role_id_';
+
     // use trait Timestampable for creation_date and modified_date fields.
     use Timestampable;
 
@@ -91,7 +97,7 @@ class User extends AbstractModel
      */
     public function setPassword($password)
     {
-        if (!empty($password) && $this->password != $password) {
+        if ($this->getId() === null || !empty($password) && $this->password != $password) {
             $this->password = $this->getDI()->get('security')->hash($password);
         }
     }
@@ -109,7 +115,7 @@ class User extends AbstractModel
             $arguments,
             [
                 'cache' => [
-                    'key' => 'role_id_' . $this->role_id . '.cache'
+                    'key' => self::CACHE_PREFIX . $this->role_id
                 ]
             ]
         );
@@ -164,13 +170,15 @@ class User extends AbstractModel
      */
     public function validation()
     {
+        if ($this->_errorMessages === null) {
+            $this->_errorMessages = [];
+        }
+
         $this->validate(new Uniqueness(["field" => "username"]));
         $this->validate(new Uniqueness(["field" => "email"]));
         $this->validate(new Email(["field" => "email", "required" => true]));
         $this->validate(new StringLength(["field" => "password", "min" => 6]));
 
-        if ($this->validationHasFailed() == true) {
-            return false;
-        }
+        return $this->validationHasFailed() !== true;
     }
 }

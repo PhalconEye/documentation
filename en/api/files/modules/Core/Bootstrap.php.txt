@@ -23,6 +23,7 @@ use Core\Model\LanguageTranslation;
 use Core\Model\Settings;
 use Core\Model\Widget;
 use Engine\Bootstrap as EngineBootstrap;
+use Engine\Cache\System;
 use Engine\Config;
 use Engine\Translation\Db as TranslationDb;
 use Phalcon\DI;
@@ -77,7 +78,7 @@ class Bootstrap extends EngineBootstrap
         $config = $this->getConfig();
 
         $this->_initI18n($di, $config);
-        if (!$config->application->installed) {
+        if (!$config->installed) {
             return;
         }
 
@@ -92,13 +93,13 @@ class Bootstrap extends EngineBootstrap
         /**
          * Listening to events in the dispatcher using the Acl.
          */
-        if ($config->application->installed) {
+        if ($config->installed) {
             $this->getEventsManager()->attach('dispatch', $di->get('core')->acl());
         }
 
         // Install assets if required.
         if ($config->application->debug) {
-            $di->get('assets')->installAssets(PUBLIC_PATH . '/themes/' . Settings::getSetting('system_theme'));
+            $di->get('assets')->installAssets(PUBLIC_PATH . '/themes/' . Settings::getValue('system', 'theme'));
         }
     }
 
@@ -119,8 +120,8 @@ class Bootstrap extends EngineBootstrap
         $languageObject = null;
         if (!$di->get('session')->has('language')) {
             /** @var Language $languageObject */
-            if ($config->application->installed) {
-                $language = Settings::getSetting('system_default_language');
+            if ($config->installed) {
+                $language = Settings::getValue('system', 'default_language');
                 if ($language == 'auto') {
                     $locale = \Locale::acceptFromHttp($_SERVER["HTTP_ACCEPT_LANGUAGE"]);
                     $languageObject = Language::findFirst("language = '" . $locale . "' OR locale = '" . $locale . "'");
@@ -141,14 +142,17 @@ class Bootstrap extends EngineBootstrap
         $language = $di->get('session')->get('language');
         $translate = null;
 
-        if (!$config->application->debug || !$config->application->installed) {
+        if (!$config->application->debug || !$config->installed) {
             $messages = [];
-            if (file_exists(ROOT_PATH . "/app/var/languages/" . $language . ".php")) {
-                require ROOT_PATH . "/app/var/languages/" . $language . ".php";
+            $directory = $config->application->languages->cacheDir;
+            $extension = ".php";
+
+            if (file_exists($directory . $language . $extension)) {
+                require $directory . $language . $extension;
             } else {
-                if (file_exists(ROOT_PATH . "/app/var/languages/en.php")) {
+                if (file_exists($directory . Config::CONFIG_DEFAULT_LANGUAGE . $extension)) {
                     // fallback to default
-                    require ROOT_PATH . "/app/var/languages/en.php";
+                    require $directory . Config::CONFIG_DEFAULT_LANGUAGE . $extension;
                 }
             }
 
@@ -161,15 +165,18 @@ class Bootstrap extends EngineBootstrap
             if (!$languageObject) {
                 $languageObject = Language::findFirst(
                     [
-                        'conditions' => 'language = :language: OR language = :default:',
+                        'conditions' => 'language = :language:',
                         'bind' => (
                             [
-                                "language" => $language,
-                                "default" => Config::CONFIG_DEFAULT_LANGUAGE
+                                "language" => $language
                             ]
                             )
                     ]
                 );
+
+                if (!$languageObject) {
+                    $languageObject = Language::findFirst("language = '" . Config::CONFIG_DEFAULT_LANGUAGE . "'");
+                }
             }
 
             $translate = new TranslationDb($di, $languageObject->getId(), new LanguageTranslation());
@@ -192,8 +199,7 @@ class Bootstrap extends EngineBootstrap
         }
 
         $cache = $di->get('cacheData');
-        $cacheKey = "widgets_metadata.cache";
-        $widgets = $cache->get($cacheKey);
+        $widgets = $cache->get(System::CACHE_KEY_WIDGETS_METADATA);
 
         if ($widgets === null) {
             $widgets = [];
@@ -201,7 +207,7 @@ class Bootstrap extends EngineBootstrap
                 $widgets[] = [$object->id, $object->getKey(), $object];
             }
 
-            $cache->save($cacheKey, $widgets, 0); // Unlimited.
+            $cache->save(System::CACHE_KEY_WIDGETS_METADATA, $widgets, 0); // Unlimited.
         }
         $di->get('widgets')->addWidgets($widgets);
     }

@@ -13,13 +13,14 @@
   | to license@phalconeye.com so we can send you a copy immediately.       |
   +------------------------------------------------------------------------+
   | Author: Ivan Vorontsov <ivan.vorontsov@phalconeye.com>                 |
+  | Author: Piotr Gasiorowski <p.gasiorowski@vipserv.org>                  |
   +------------------------------------------------------------------------+
 */
 
 namespace Engine\Form\Behaviour;
 
-use Engine\Form\AbstractElement;
 use Engine\Form;
+use Engine\Form\AbstractElement;
 use Engine\Form\Element\File as FileElement;
 use Phalcon\DI;
 use Phalcon\Mvc\View;
@@ -31,6 +32,7 @@ use Phalcon\Mvc\View;
  * @category  PhalconEye
  * @package   Engine\Form\Behaviour
  * @author    Ivan Vorontsov <ivan.vorontsov@phalconeye.com>
+ * @author    Piotr Gasiorowski <p.gasiorowski@vipserv.org>
  * @copyright 2013-2014 PhalconEye Team
  * @license   New BSD License
  * @link      http://phalconeye.com/
@@ -67,8 +69,10 @@ trait ElementsBehaviour
                 $partial = array_merge(['form' => $this], $partial);
             }
 
+            /** @var View $view */
+            $view = $this->getDI()->get('view');
             ob_start();
-            DI::getDefault()->get('view')->partial($value, $partial);
+            $view->partial($value, $partial);
             $html = ob_get_contents();
             ob_end_clean();
             $element->setValue($html);
@@ -236,12 +240,16 @@ trait ElementsBehaviour
         $name,
         $label = null,
         $description = null,
-        $elementOptions = [],
+        $elementOptions = null,
         $value = null,
         array $options = [],
         array $attributes = []
     )
     {
+        if (is_array($elementOptions)) {
+            $options['elementOptions'] = $elementOptions;
+        }
+
         $element = new Form\Element\CkEditor($name, $options, $attributes);
 
         if (!$label) {
@@ -251,7 +259,6 @@ trait ElementsBehaviour
         $element
             ->setOption('label', $label)
             ->setOption('description', $description)
-            ->setOption('elementOptions', $elementOptions)
             ->setValue($value);
 
         $this->add($element);

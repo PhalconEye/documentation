@@ -37,12 +37,18 @@ use User\Model\Role;
 class Create extends CoreForm
 {
     /**
+     * @var Page
+     */
+    protected $_currentPageObject;
+
+    /**
      * Create form.
      *
      * @param AbstractModel $entity Entity object.
      */
     public function __construct(AbstractModel $entity = null)
     {
+        $this->_currentPageObject = $entity;
         parent::__construct();
 
         if (!$entity) {
@@ -77,7 +83,7 @@ class Create extends CoreForm
                 'Controller',
                 'Controller and action name that will handle this page. Example: NameController->someAction',
                 null,
-                ['emptyAllowed' => true]
+                ['emptyAllowed' => true, 'escape' => false]
             )
             ->addMultiSelect(
                 'roles',

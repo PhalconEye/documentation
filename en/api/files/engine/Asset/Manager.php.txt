@@ -102,7 +102,7 @@ class Manager extends AssetManager
         ///////////////////////////////////
         // Compile themes css.
         ///////////////////////////////////
-        if ($this->_config->application->installed && !empty($themeDirectory)) {
+        if ($this->_config->installed && !empty($themeDirectory)) {
             $themeFiles = glob($themeDirectory . '/*.less');
             FsUtilities::fsCheckLocation($location . 'css/');
             foreach ($themeFiles as $file) {
@@ -153,11 +153,12 @@ class Manager extends AssetManager
     /**
      * Clear assets cache.
      *
-     * @param bool $refresh Install and compile new assets?
+     * @param bool   $refresh        Install and compile new assets?
+     * @param string $themeDirectory Theme directory.
      *
      * @return void
      */
-    public function clear($refresh = true)
+    public function clear($refresh = true, $themeDirectory = '')
     {
         $location = PUBLIC_PATH . '/' . $this->_config->application->assets->local;
         $files = FsUtilities::fsRecursiveGlob($location, '*'); // get all file names
@@ -169,7 +170,7 @@ class Manager extends AssetManager
         }
 
         if ($refresh) {
-            $this->installAssets();
+            $this->installAssets($themeDirectory);
         }
     }
 

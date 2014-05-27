@@ -27,6 +27,7 @@ use Core\Form\CoreForm;
 use Core\Model\Language;
 use Core\Model\Package;
 use Core\Model\PackageDependency;
+use Core\Model\Settings;
 use Core\Model\Widget;
 use Engine\Db\Schema;
 use Engine\Exception;
@@ -196,7 +197,7 @@ class AdminPackagesController extends AbstractAdminController
                     $package->save();
 
                     $this->_enablePackageConfig($package);
-                    $packageManager->generateMetadata([$package]);
+                    $this->_updateMetadata();
 
                     // install package dependencies
                     if ($manifest->get('dependencies')) {
@@ -213,41 +214,57 @@ class AdminPackagesController extends AbstractAdminController
                     }
                 }
 
-                // Run module install script.
-                $newPackageVersion = $packageManager->runInstallScript($manifest);
-                $this->app->clearCache();
+                $redirect = null;
 
-                // Install translations if possible.
-                if (!empty($manifest->i18n)) {
-                    foreach ($manifest->i18n as $languageData) {
-                        Language::parseImportData($this->getDI(), $languageData->toArray());
+                if ($manifest->type == Manager::PACKAGE_TYPE_MODULE) {
+                    // Run module install script.
+                    $newPackageVersion = $packageManager->runInstallScript($manifest);
+                    $this->_clearCache();
+
+                    // Install translations if possible.
+                    if (!empty($manifest->i18n)) {
+                        foreach ($manifest->i18n as $languageData) {
+                            Language::parseImportData($this->getDI(), $languageData->toArray());
+                        }
                     }
+
+                    // Register module in system to perform database update.
+                    $modules = $this->getDI()->get('registry')->modules;
+                    $loader = $this->getDI()->get('loader');
+                    $modules[] = $manifest->name;
+                    $moduleName = ucfirst($manifest->name);
+
+                    // Register namespaces.
+                    $loader->registerNamespaces(
+                        [$moduleName => $this->getDI()->get('registry')->directories->modules . $moduleName],
+                        true
+                    );
+                    $loader->register();
+
+                    // Register module in app
+                    $this->getDI()->get('app')->registerModules([$manifest->name => $moduleName . '\Bootstrap']);
+                    $this->getDI()->get('registry')->modules = $modules;
+
+                    // Update database.
+                    $schema = new Schema($this->getDI());
+                    $schema->updateDatabase();
+
+                    // Redirect to modules page
+                    $redirect = 'admin/module/'. $manifest->name;
                 }
 
-                // Register module in system to perform database update.
-                $modules = $this->getDI()->get('registry')->modules;
-                $loader = $this->getDI()->get('loader');
-                $modules[] = $manifest->name;
-                $moduleName = ucfirst($manifest->name);
-
-                // Register namespaces.
-                $namespaces = $loader->getNamespaces();
-                $namespaces[$moduleName] = $this->getDI()->get('registry')->directories->modules . $moduleName;
-                $loader->registerNamespaces($namespaces);
-                $loader->register();
-
-                // Register module in app
-                $this->getDI()->get('app')->registerModules([$manifest->name => $moduleName . '\Bootstrap']);
-                $this->getDI()->get('registry')->modules = $modules;
-
-                // Update database.
-                $schema = new Schema($this->getDI());
-                $schema->updateDatabase();
+                if ($redirect) {
+                    $flashType = 'flashSession';
+                    $this->response->redirect($redirect);
+                    $this->view->disable();
+                } else {
+                    $flashType = 'flash';
+                }
 
                 if ($manifest->isUpdate) {
-                    $this->flash->success('Package updated to version ' . $newPackageVersion . '!');
+                    $this->{$flashType}->success("Package $manifest->title updated to version $newPackageVersion!");
                 } else {
-                    $this->flash->success('Package installed!');
+                    $this->{$flashType}->success("Package $manifest->title installed!");
                 }
 
             } catch (Exception $e) {
@@ -285,7 +302,7 @@ class AdminPackagesController extends AbstractAdminController
         $packageManager = new Manager();
         $packageManager->createPackage($data);
         $this->_enablePackageConfig($package);
-        $this->_updateMetadata($package);
+        $this->_updateMetadata();
 
         switch ($package->type) {
             case Manager::PACKAGE_TYPE_MODULE:
@@ -344,7 +361,7 @@ class AdminPackagesController extends AbstractAdminController
         $package = $form->getEntity();
         $this->_setWidgetData($form, $package, $data);
         $package->save();
-        $this->_updateMetadata($package);
+        $this->_updateMetadata();
 
         $this->flashSession->success('Package saved!');
         return $this->response->redirect(['for' => $return]);
@@ -405,7 +422,7 @@ class AdminPackagesController extends AbstractAdminController
         }
         $package->data['events'] = $form->getEventsData();
         $package->save();
-        $this->_updateMetadata($package);
+        $this->_updateMetadata();
 
         $this->flashSession->success('Package events saved!');
         return $this->response->redirect(['for' => $return]);
@@ -523,8 +540,8 @@ class AdminPackagesController extends AbstractAdminController
                 $package->delete();
 
                 $this->_removePackageConfig($package);
-                $packageManager->generateMetadata(Package::find());
-                $this->app->clearCache();
+                $this->_updateMetadata();
+                $this->_clearCache();
 
                 // Update database.
                 $schema = new Schema($this->getDI());
@@ -567,8 +584,8 @@ class AdminPackagesController extends AbstractAdminController
             $package->save();
 
             $this->_enablePackageConfig($package);
-            $this->_updateMetadata($package);
-            $this->app->clearCache();
+            $this->_updateMetadata();
+            $this->_clearCache();
         }
 
         return $this->response->redirect(['for' => $return]);
@@ -603,8 +620,8 @@ class AdminPackagesController extends AbstractAdminController
             $package->save();
 
             $this->_disablePackageConfig($package);
-            $this->_updateMetadata($package);
-            $this->app->clearCache();
+            $this->_updateMetadata();
+            $this->_clearCache();
         }
 
         return $this->response->redirect(['for' => $return]);
@@ -650,8 +667,9 @@ class AdminPackagesController extends AbstractAdminController
     {
         switch ($package->type) {
             case Manager::PACKAGE_TYPE_MODULE:
-                // remove widgets
+                // remove widgets and settings
                 $this->db->delete(Widget::getTableName(), 'module = ?', [$package->name]);
+                Settings::factory($package->name)->delete();
                 break;
             case Manager::PACKAGE_TYPE_WIDGET:
                 if ($widget = $package->getWidget()) {
@@ -764,7 +782,7 @@ class AdminPackagesController extends AbstractAdminController
         if ($dependencies->count()) {
             $message = 'You can\'t uninstall or disable this package, because it\'s related to:<br/>';
             foreach ($dependencies as $dependency) {
-                $dependencyPackage = $dependency->getDependencyPackage();
+                $dependencyPackage = $dependency->getPackage();
                 $message .= " - {$dependencyPackage->type} '{$dependencyPackage->name}'";
             }
             $this->flashSession->error($message);
@@ -832,26 +850,13 @@ class AdminPackagesController extends AbstractAdminController
     }
 
     /**
-     * Update package metadata.
-     *
-     * @param Package $package Package object.
+     * Update packages metadata.
      *
      * @return void
      */
-    protected function _updateMetadata(Package $package)
+    protected function _updateMetadata()
     {
         $packageManager = new Manager();
-        $data = $package->getData();
-
-        if (
-            $package->type == Manager::PACKAGE_TYPE_WIDGET &&
-            !empty($data) &&
-            !empty($data['module'])
-        ) {
-            $modulePackage = $this->_getPackage('module', $data['module']);
-            $packageManager->generateMetadata([$modulePackage]);
-        } else {
-            $packageManager->generateMetadata([$package]);
-        }
+        $packageManager->generateMetadata(Package::find());
     }
 }

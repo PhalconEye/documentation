@@ -18,8 +18,6 @@
 
 namespace Core\Controller;
 
-use Core\Model\Settings;
-
 /**
  * Admin Index controller.
  *
@@ -57,8 +55,22 @@ class AdminIndexController extends AbstractAdminController
         $this->view->disable();
         $this->config->application->debug = (bool)$this->request->get('debug', null, true);
         $this->config->save();
-        $this->app->clearCache();
-        $this->assets->installAssets(PUBLIC_PATH . '/themes/' . Settings::getSetting('system_theme'));
+        $this->_clearCache();
+    }
+
+    /**
+     * Action for cleaning cache.
+     *
+     * @return void
+     *
+     * @Get("/admin/clear", name="admin-clear")
+     */
+    public function cleanAction()
+    {
+        $this->view->disable();
+        $this->_clearCache();
+        $this->flashSession->success('Cache cleared!');
+        $this->response->redirect(['for' => 'admin-home']);
     }
 }
 
