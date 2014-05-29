@@ -1,15 +1,15 @@
 Access Control List
 ===================
-ACL is based on `Phalcon ACL`_. Acl roles stored in database. User can have one role.
-In production mode Acl compiles from database and cached by system.
+ACL is based on `Phalcon ACL`_. Acl Roles are stored in database. Each user can have only one role.
+In production mode Acl compiles from database and is cached by the system.
 
-There is only one default acl key: Core\\Api\\Acl::ACL_ADMIN_AREA ('AdminArea'). This key is used for admin panel access.
-By default there are three roles: Admin, User, Guest. All not authenticated requests are guests. Logged in is user.
-And admin, that has more access than user.
+There is only one default Acl key: Core\\Api\\Acl::ACL_ADMIN_AREA ('AdminArea'). This key is used for admin panel access.
+By default there are three roles: Admin, User and Guest. All not authenticated requests assigned to Guest Role.
+Logged-in sessions are assigned to User. Admin is the most privileged Role.
 
 ACL Usage
 ---------
-Acl class is implemented as Core module API, so it can be accessed via api container (core container) inside DI.
+Acl class is part of Core module API and can be accessed via api container (core container) from DI.
 
 In controller:
 
@@ -17,10 +17,10 @@ In controller:
 
     <?php
 
-    // Check that current user have access to some action on resource.
+    // Check if current user has access to perform given action on the resource.
     $this->core->acl()->isAllowed($viewer->getRole()->name, $resource, $action) == Acl::ALLOW;
 
-    // Get allowed value to user on resource.
+    // Get allowed value on given resource for user.
     $this->getDI()->get('core')->acl()->getAllowedValue($resource, $viewer->getRole(), $valueName);
 
 In view:
@@ -38,13 +38,13 @@ In view:
 
 Model ACL
 ---------
-For example we have blog system. And we want to allow or disallow access for some roles to actions "create", "edit" and "delete". Also we have
-two values:
+Let's take the Blog system as an example. We can allow or disallow access for some roles to perform actions such as:
+"create", "edit" and "delete". Also we have two values:
 
-    * "blog_footer" - Show some html to users as footer to each blog (for example, for user: "<b>Hello world</b>" and for guest: "Bye").
-    * "blog_count" - Count of blogs per page on browse page.
+    * "blog_footer" - Displays some HMTL content in footer on each blog (eg. for user: "<b>Hello world</b>" and for guest: "Bye").
+    * "blog_count" - Number of blogs per page on browse page.
 
-We need to define required actions and values in blog model via annotation @Acl:
+We can also define required actions and their values in blog model via annotation @Acl:
 
 .. code-block:: php
 
@@ -69,7 +69,7 @@ We need to define required actions and values in blog model via annotation @Acl:
     }
 
 After defining required actions and values you can set their values in admin panel via `Access Rights`_ system.
-All changes made to models triggers automatically in development mode.
+Note: In development mode PhalconEye will automatically pick up all changes made to models.
 
 .. _`Access Rights`: ../user/access.html
 

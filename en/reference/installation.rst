@@ -2,8 +2,8 @@ Installation
 ============
 
 1. Get Phalcon Framework up and running (1.3.1 version is required). See http://docs.phalconphp.com/en/latest/reference/install.html
-2. If you have cloned PhalconEye from GitHub you can run ant task (ant dist) and get the package as zip.
-3. Extract (or copy) PhalconEye's code onto your webserver.
+2. If you cloned PhalconEye from GitHub, you must run ant task (ant assets) which will generate static JavaScript and css files.
+3. Deploy PhalconEye's code onto your webserver (you can run ant dist to generate a package).
 4. 'public' directory must be set as server's web root. VirtualHost example for Apache:
 
 .. code-block:: apache

@@ -3,21 +3,21 @@ Configuration
 
 Stages
 ------
-Stages allows you to set different configuration per virtual host, server, etc. From stock CMS has two stages: "development" and "production".
+Stages allow you to set different configuration per virtual host, server, etc. By default, PhalconEye comes with two stages: "development" and "production".
 CMS is bundled with "development" stage, this is defined in '/public/.htaccess' file:
 
 .. code-block:: apache
 
     SetEnv PHALCONEYE_STAGE development
 
-If stage isn't defined "production" is used.
-You are allowed to add any stage you want, just create new directory inside 'config' directory and set default configuration.
+If a stage isn't defined "production" will be used.
+You are allowed to add as many stages as you want, just create new directory inside 'config' folder and set default configuration.
 
 Config files
 ------------
-Configuration contains two default files, that is necessary for system:
+Configuration contains two default files, which are necessary for the system:
 
-1. application.php - contains main settings for application (cache, view, logging, etc). Most of this settings you can find in |phalcon_documentation|.
+1. application.php - contains main settings for application (cache, view, logging, etc). You can find most of these settings in |phalcon_documentation|.
 
 .. code-block:: php
 
@@ -84,7 +84,7 @@ Configuration contains two default files, that is necessary for system:
 
 Behaviour
 ---------
-All \*.php files under stages directories merging in one structure. So, for example we have such files:
+All \*.php files under stage directories are merged into one structure. For example we can have the following files:
 
 .. code-block:: text
 
@@ -95,7 +95,7 @@ All \*.php files under stages directories merging in one structure. So, for exam
         ├── yourconfig2.php
         └── database.php
 
-It means that in "development" stage we would be able to get values from their spaces:
+It means that in "development" stage we would be able to get the values as follows:
 
 .. code-block:: php
 

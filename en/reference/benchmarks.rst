@@ -14,11 +14,11 @@ The testing hardware environment:
 
 Software:
 
-* Wordpress 3.9.1
+* WordPress 3.9.1
 * Joomla 3.3.0
 * PhalconEye 0.4.0
 
-Wordpress 3.9.1
+WordPress 3.9.1
 ---------------
 
 .. image:: /images/benchmarks_1.png

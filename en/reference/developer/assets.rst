@@ -1,11 +1,20 @@
 Assets
 ======
-Assets exists as modules static files. For example blog module is exists. This modules has css, less, images, js files.
-This files must be available for user at frontend. But coz of modules location - web server can not access this files.
 
-That's why assets system where added as part of management of this files.
+Assets are public files which are bundled with Modules and the CMS itself.
+Before we start explaining how these are handled you should understand the difference between public and not-public files.
 
-There is a command that will install all assets from modules and compiles theme less files:
+* "/app" - private folder whose files can not be accessed directly from requests.
+* "/public" - public front-end folder which stores Assets and templates.
+
+For example the Blog module has css, less, js files and images which can not be accessed directly because
+of their location on the web server (/app/modules/Blog).
+
+Since these files must be available publicly the Assets system was implemented.
+It will take the files, merge, minify and copy them over to the public folder, that's it!
+You will never need to worry about doing all this on your own.
+
+There is a console command to install the Modules' Assets and compile Theme's less files:
 
 .. code-block:: bash
 
@@ -137,7 +146,7 @@ To install assets from the code:
     $assetsManager->addInline('test', '<link rel="stylesheet" href="../../_static/css/docs.css" type="text/css"/>');
     $assetsManager->removeInline('test');
 
-Other information about assets you can read in |phalcon_documentation|.
+You can get more details about the Assets from |phalcon_documentation|.
 
 .. |phalcon_documentation| raw:: html
 
