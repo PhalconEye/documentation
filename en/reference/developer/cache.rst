@@ -8,7 +8,7 @@ Cache is required to improve performance. PhalconEye has 4 types of cache:
 | viewCache    | Used by Phalcon to cache views.                                                                       |
 |              | http://docs.phalconphp.com/en/latest/reference/views.html#caching-view-fragments                      |
 +--------------+-------------------------------------------------------------------------------------------------------+
-| cacheOutput  | Used by developer to cache output data (pieces of HTML or text).                                       |
+| cacheOutput  | Used by developer to cache output data (pieces of HTML or text).                                      |
 +--------------+-------------------------------------------------------------------------------------------------------+
 | cacheData    | Used by developer to cache data (rows, arrays, etc).                                                  |
 +--------------+-------------------------------------------------------------------------------------------------------+
